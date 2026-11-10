@@ -1,0 +1,26 @@
+/* Design tokens. Change colours here and the whole site follows. */
+:root{
+  --font-head:'Archivo',system-ui,sans-serif;
+  --font-body:'IBM Plex Sans',system-ui,sans-serif;
+  --r-sm:3px;--r-md:6px;
+  --container:1120px;
+  --space-section:clamp(56px,8vw,104px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  /* Call to action: identical in both themes */
+  --cta:#E07A2F;--cta-hover:#EB8A40;--cta-ink:#1A1F22;
+  /* Light theme (default) */
+  --bg:#F2F3F1;--surface:#FFFFFF;--surface-2:#E8EBEA;
+  --ink:#1A1F22;--muted:#586369;
+  --line:#DADFDF;--line-strong:#BCC4C6;
+  --base:#263238;--panel:#263238;
+  --moss:#55732F;--earth:#9A6440;--sand:#CDB98F;--stone:#9AA5AA;
+  --shadow:0 12px 32px rgba(38,50,56,.08);
+}
+[data-theme="dark"]{
+  --bg:#0F1416;--surface:#172024;--surface-2:#1E2A30;
+  --ink:#E9ECEC;--muted:#97A4AA;
+  --line:#26333A;--line-strong:#3A4A52;
+  --base:#0B1013;--panel:#1B262B;
+  --moss:#9DBE66;--earth:#C79266;--sand:#8D7E5E;--stone:#4A5A62;
+  --shadow:0 12px 32px rgba(0,0,0,.4);
+}

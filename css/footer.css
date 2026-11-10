@@ -1,0 +1,8 @@
+.footer{background:var(--base);color:#B7C1C6;padding-block:56px 32px;font-size:.875rem}
+.footer__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px}
+.footer h3{color:#fff;margin-bottom:12px;font-size:.95rem}
+.footer ul{display:grid;gap:6px}
+.footer a{color:inherit}
+.footer a:hover{color:#fff}
+.footer :focus-visible{outline-color:#fff}
+.footer__legal{margin-top:40px;padding-top:20px;border-top:1px solid #34444C;font-size:.8125rem}
