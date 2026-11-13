@@ -1,4 +1,4 @@
-// EDIT: put the owner's real WhatsApp number (country code, no + or spaces).
+// The WhatsApp number can be changed from the admin panel (data/prices.json); this is the fallback.
 export const business = {
   name: 'The Builder’s Collection',
   whatsapp: '254700000000',

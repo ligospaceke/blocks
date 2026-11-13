@@ -1,0 +1,54 @@
+{
+  "whatsapp": "254700000000",
+  "products": {
+    "hollow-6": {
+      "price": null,
+      "available": true
+    },
+    "hollow-4": {
+      "price": null,
+      "available": true
+    },
+    "solid": {
+      "price": null,
+      "available": true
+    },
+    "cabro-60": {
+      "price": null,
+      "available": true
+    },
+    "cabro-80": {
+      "price": null,
+      "available": true
+    },
+    "sand-building": {
+      "price": null,
+      "available": true
+    },
+    "sand-river": {
+      "price": null,
+      "available": true
+    },
+    "sand-plaster": {
+      "price": null,
+      "available": true
+    }
+  },
+  "zones": {
+    "kimana": {
+      "fee": null
+    },
+    "rombo": {
+      "fee": null
+    },
+    "loitokitok": {
+      "fee": null
+    },
+    "entonet": {
+      "fee": null
+    },
+    "other": {
+      "fee": null
+    }
+  }
+}

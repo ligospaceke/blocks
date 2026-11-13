@@ -1,7 +1,8 @@
+import { brickMark } from './ui.js';
 export const Navbar = () => `
 <header class="nav">
   <div class="container nav__bar">
-    <a class="brand" href="#top"><span class="brand__mark" aria-hidden="true"></span><span class="brand__name">The Builder’s Collection</span></a>
+    <a class="brand" href="#top">${brickMark()}<span class="brand__name">The Builder’s Collection</span></a>
     <nav class="nav__links" aria-label="Main">
       <a href="#departments">What we supply</a>
       <a href="#fleet">Transport</a>

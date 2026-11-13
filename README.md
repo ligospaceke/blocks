@@ -1,15 +1,25 @@
 # The Builder’s Collection
 
-Zero-dependency site: HTML, CSS and native ES modules. No build step.
+HTML, CSS and native ES modules. No build step, no packages.
 
 ## Run it
-ES modules do not load from file://, so serve the folder:
-    python3 -m http.server 8080
-Then open http://localhost:8080
+    ADMIN_PASSWORD=choose-a-strong-password node server.js
+Open http://localhost:8080 for the site and http://localhost:8080/admin.html for the admin panel.
+Needs Node 18 or newer. Without ADMIN_PASSWORD, a temporary one is printed in the terminal.
 
-## What the owner edits
-- js/data/business.js: WhatsApp number, phone, location (replace the sample number)
-- js/data/products.js: names, specs, prices (null shows "Price on request")
-- js/data/vehicles.js: truck capacities (sample numbers), delivery areas and fees
-- assets/images/: real photos (see README.txt there)
-- css/variables.css: all colours and fonts, light and dark
+## Admin panel
+Sign in at /admin.html to set the WhatsApp number, each product price, in-stock status and delivery fee per trip.
+Changes are saved to data/prices.json and appear on the site straight away.
+Customers never see the admin password. Only prices, stock and fees can be changed from the panel.
+
+If you host on plain static hosting (no Node), the site reads data/prices.json directly.
+Use "Download prices.json" in the panel and upload the file to data/ to publish changes.
+
+## Orders
+Every checkout builds a WhatsApp message (items, truck, delivery area, notes, totals when prices are set) and opens WhatsApp to the number in the admin panel.
+
+## Other edits
+- js/data/products.js: names, specs, photos
+- js/data/vehicles.js: trucks, capacities (sample numbers), delivery areas
+- assets/images/: photos
+- css/variables.css: colours and fonts, light and dark

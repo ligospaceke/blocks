@@ -1,4 +1,4 @@
-import { products, formatPrice } from '../data/products.js';
+import { products, priceLine } from '../data/products.js';
 import { icon, photo } from './ui.js';
 
 const TABS = [{ id: 'all', label: 'All products' }, { id: 'blocks', label: 'Blocks' }, { id: 'cabro', label: 'Cabro' }, { id: 'sand', label: 'Sand' }];
@@ -24,12 +24,14 @@ export function mountCatalog(root, store) {
 
   const card = (p) => {
     const q = store.state.items[p.id] || 0;
-    const ctl = q
-      ? `<div class="stepper" role="group" aria-label="Quantity for ${p.name}"><button type="button" data-step="-" aria-label="Fewer ${p.name}">−</button><input type="number" min="0" inputmode="numeric" value="${q}" aria-label="${p.name} quantity"><button type="button" data-step="+" aria-label="More ${p.name}">+</button></div>`
-      : `<button class="btn btn--ghost" type="button" data-step="+">Add to order</button>`;
-    return `<article class="pcard" data-id="${p.id}">${photo(p.image, p.name, p.category)}
+    const ctl = p.available === false
+      ? '<p class="stock">Out of stock</p>'
+      : q
+        ? `<div class="stepper" role="group" aria-label="Quantity for ${p.name}"><button type="button" data-step="-" aria-label="Fewer ${p.name}">−</button><input type="number" min="0" inputmode="numeric" value="${q}" aria-label="${p.name} quantity"><button type="button" data-step="+" aria-label="More ${p.name}">+</button></div>`
+        : '<button class="btn btn--ghost" type="button" data-step="+">Add to order</button>';
+    return `<article class="pcard" data-id="${p.id}">${photo(p.image, p.name)}
       <div class="pcard__body"><h3>${p.name}</h3><p class="pcard__spec">${p.spec}</p><p class="pcard__use">${p.use}</p>
-      <p class="pcard__price">${formatPrice(p.price)} per ${p.unit}</p>${ctl}</div></article>`;
+      <p class="pcard__price">${priceLine(p)}</p>${ctl}</div></article>`;
   };
   const render = () => {
     dlg.querySelectorAll('.tab').forEach((t) => t.setAttribute('aria-selected', t.dataset.tab === cat));
@@ -49,10 +51,7 @@ export function mountCatalog(root, store) {
     if (e.target === dlg || e.target.closest('[data-close]')) return dlg.close();
     const tab = e.target.closest('[data-tab]');
     if (tab) { cat = tab.dataset.tab; return render(); }
-    if (e.target.closest('[data-goto-build]')) {
-      dlg.close();
-      return document.getElementById('build').scrollIntoView();
-    }
+    if (e.target.closest('[data-goto-build]')) { dlg.close(); return document.getElementById('build').scrollIntoView(); }
     const b = e.target.closest('[data-step]');
     if (b) {
       const id = b.closest('[data-id]').dataset.id;
@@ -64,5 +63,5 @@ export function mountCatalog(root, store) {
   dlg.addEventListener('change', (e) => {
     if (e.target.matches('.stepper input')) store.setQty(e.target.closest('[data-id]').dataset.id, e.target.value);
   });
-  store.subscribe(() => { if (dlg.open && !dlg.contains(document.activeElement?.matches('input') ? document.activeElement : null)) render(); });
+  store.subscribe(() => { if (dlg.open && document.activeElement?.tagName !== 'INPUT') render(); });
 }

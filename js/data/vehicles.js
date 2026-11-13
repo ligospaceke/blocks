@@ -1,10 +1,9 @@
-// EDIT: capacity = how many pieces (blocks, cabro) or loads (sand) one trip carries.
-// These are SAMPLE numbers. Replace them with the real figures before launch.
+// capacity = pieces (blocks, cabro) or loads (sand) per trip. SAMPLE numbers: replace with real figures.
 export const vehicles = [
-  { id: 'faw', name: 'FAW tipper', role: 'Bulk sand and large block orders', blurb: 'Our heavy hauler for full loads to building sites.', capacity: { blocks: 800, cabro: 1500, sand: 1 }, image: 'assets/images/faw-tipper.jpg' },
-  { id: 'fuso', name: 'Mitsubishi Fuso canter', role: 'Smaller orders and tighter access', blurb: 'A lighter truck for narrow roads and smaller jobs.', capacity: { blocks: 300, cabro: 600, sand: 1 }, image: 'assets/images/fuso-canter.jpg' },
+  { id: 'faw', name: 'FAW tipper', role: 'Bulk sand and large block orders', blurb: 'Our heavy hauler for full loads to building sites.', capacity: { blocks: 800, cabro: 1500, sand: 1 }, image: 'assets/images/faw-tipper.jpg', alt: 'Tipper truck raising its body to tip blocks' },
+  { id: 'fuso', name: 'Mitsubishi Fuso canter', role: 'Smaller orders and tighter access', blurb: 'A lighter truck for narrow roads and smaller jobs.', capacity: { blocks: 300, cabro: 600, sand: 1 }, image: 'assets/images/fuso-canter.jpg', alt: 'Canter truck loaded with stacked blocks' },
 ];
-// EDIT: fee in KES per trip, or null to confirm on WhatsApp.
+// fee = KES per trip, set from the admin panel. null means confirmed on WhatsApp.
 export const zones = [
   { id: 'kimana', name: 'Kimana', fee: null },
   { id: 'rombo', name: 'Rombo', fee: null },

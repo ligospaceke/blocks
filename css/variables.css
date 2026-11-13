@@ -1,26 +1,23 @@
-/* Design tokens. Change colours here and the whole site follows. */
+/* Design tokens. Slate and cut-stone neutrals, one orange accent taken from the fleet. */
 :root{
   --font-head:'Archivo',system-ui,sans-serif;
   --font-body:'IBM Plex Sans',system-ui,sans-serif;
-  --r-sm:3px;--r-md:6px;
+  --r-tag:4px;--r-ctl:8px;--r-card:12px;--r-panel:16px;
   --container:1120px;
-  --space-section:clamp(56px,8vw,104px);
-  --ease:cubic-bezier(.2,.7,.2,1);
-  /* Call to action: identical in both themes */
-  --cta:#E07A2F;--cta-hover:#EB8A40;--cta-ink:#1A1F22;
-  /* Light theme (default) */
-  --bg:#F2F3F1;--surface:#FFFFFF;--surface-2:#E8EBEA;
-  --ink:#1A1F22;--muted:#586369;
-  --line:#DADFDF;--line-strong:#BCC4C6;
-  --base:#263238;--panel:#263238;
-  --moss:#55732F;--earth:#9A6440;--sand:#CDB98F;--stone:#9AA5AA;
-  --shadow:0 12px 32px rgba(38,50,56,.08);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --accent:#E07A2F;--accent-hover:#EB8A40;--on-accent:#14181A;
+  --bg:#F3F4F2;--card:#FFFFFF;--raised:#ECEEEB;
+  --ink:#14181A;--ink-2:#4B5559;--ink-3:#667176;
+  --hair:rgba(20,24,26,.1);--hair-strong:rgba(20,24,26,.22);
+  --panel:#161D21;--footer:#14181A;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow-lg:0 8px 24px rgba(0,0,0,.06);
+  color-scheme:light;
 }
 [data-theme="dark"]{
-  --bg:#0F1416;--surface:#172024;--surface-2:#1E2A30;
-  --ink:#E9ECEC;--muted:#97A4AA;
-  --line:#26333A;--line-strong:#3A4A52;
-  --base:#0B1013;--panel:#1B262B;
-  --moss:#9DBE66;--earth:#C79266;--sand:#8D7E5E;--stone:#4A5A62;
-  --shadow:0 12px 32px rgba(0,0,0,.4);
+  --bg:#0E1214;--card:#151B1E;--raised:#1D2529;
+  --ink:#EDEFEF;--ink-2:#A5AFB3;--ink-3:#8A9599;
+  --hair:rgba(237,239,239,.1);--hair-strong:rgba(237,239,239,.22);
+  --panel:#1B2327;--footer:#0A0D0F;
+  --shadow-sm:none;--shadow-lg:none;
+  color-scheme:dark;
 }
