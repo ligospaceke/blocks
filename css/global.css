@@ -1,28 +1,29 @@
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/22px var(--font-body);font-variant-numeric:tabular-nums;transition:background-color .3s var(--ease),color .3s var(--ease)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 14px/22px var(--font-body);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
 body:has(dialog[open]){overflow:hidden}
 h1,h2,h3,p,ul,fieldset,figure{margin:0;padding:0}
 ul{list-style:none}
-h1,h2,h3{font-family:var(--font-head);font-weight:500}
-h1{font-size:clamp(2.25rem,5vw,3.75rem);line-height:1.05;letter-spacing:-.03em}
-h2{font-size:1.75rem;line-height:1.15}
-h3{font-size:1.125rem;line-height:1.25;font-weight:600}
+h1,h2,h3{font-family:var(--font-head);font-weight:500;font-stretch:118%}
+h1{font-size:clamp(1.75rem,3.4vw,2.75rem);line-height:1.1;letter-spacing:-.01em}
+h2{font-size:clamp(1.25rem,2vw,1.625rem);line-height:1.2}
+h3{font-size:.9375rem;line-height:1.3;font-weight:600}
 a{color:inherit}
 img{display:block;max-width:100%}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .container{width:min(100% - 48px,var(--container));margin-inline:auto}
-.section{padding-block:clamp(64px,8vw,96px)}
-.section__head{display:grid;gap:8px;max-width:60ch;margin-bottom:32px}
+.section{padding-block:var(--section)}
+.section__head{display:grid;gap:12px;max-width:44ch;margin-bottom:64px}
 .muted{color:var(--ink-2)}
-.skip{position:absolute;left:-999px;top:8px;z-index:200;padding:8px 16px;background:var(--card);border-radius:var(--r-ctl)}
+.small{font-size:12px;line-height:16px;color:var(--ink-3)}
+.skip{position:absolute;left:-999px;top:8px;z-index:300;padding:8px 16px;background:var(--card);border-radius:var(--r-ctl)}
 .skip:focus{left:8px}
-.icon{display:inline-block;width:18px;height:18px;flex:none;background:currentColor;-webkit-mask:var(--icon) center/contain no-repeat;mask:var(--icon) center/contain no-repeat}
+.icon{display:inline-block;width:16px;height:16px;flex:none;background:currentColor;-webkit-mask:var(--icon) center/contain no-repeat;mask:var(--icon) center/contain no-repeat}
 .icon--whatsapp{--icon:url(../assets/icons/whatsapp.svg)}
 .icon--location{--icon:url(../assets/icons/location.svg)}
 .icon--close{--icon:url(../assets/icons/close.svg)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border:1px solid transparent;border-radius:var(--r-ctl);font:500 15px var(--font-body);text-decoration:none;cursor:pointer;transition:background-color .16s var(--ease),border-color .16s var(--ease),transform .16s var(--ease)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border:1px solid transparent;border-radius:var(--r-ctl);font:500 14px var(--font-body);text-decoration:none;cursor:pointer;transition:background-color .2s var(--ease),border-color .2s var(--ease),transform .2s var(--ease)}
 .btn:active{transform:scale(.98)}
 .btn--primary{background:var(--accent);color:var(--on-accent)}
 .btn--primary:hover{background:var(--accent-hover)}
@@ -31,18 +32,33 @@ button,input,select,textarea{font:inherit;color:inherit}
 .btn[aria-disabled="true"],.btn:disabled{opacity:.45;pointer-events:none}
 .ph{position:relative;overflow:hidden;background:var(--raised)}
 .ph img{width:100%;height:100%;object-fit:cover}
-/* Entrance: content rises a few pixels and fades once, in view order */
-[data-reveal]{opacity:0;transform:translateY(8px)}
-[data-reveal].is-in{opacity:1;transform:none;transition:opacity .4s var(--ease),transform .4s var(--ease);transition-delay:calc(var(--i,0) * 50ms)}
-/* Loader: the brick mark lays itself once on the first visit */
-.loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--footer);color:#EDEFEF;transition:opacity .4s var(--ease),visibility .4s}
-.loader--out{opacity:0;visibility:hidden}
-.seen .loader{display:none}
-.loader svg{width:96px;height:auto;overflow:visible}
-.loader rect{opacity:0;transform:translateY(-8px);animation:lay .4s var(--ease) forwards;animation-delay:calc(var(--n) * 120ms)}
+.topo{position:absolute;inset:0;width:100%;height:100%;color:var(--topo);pointer-events:none}
+.topo path{fill:none;stroke:currentColor;stroke-width:1.1;stroke-linejoin:round}
+.topo--draw path{stroke-dasharray:1;stroke-dashoffset:1}
+.is-in .topo--draw path,.topo--draw.is-in path{stroke-dashoffset:0;transition:stroke-dashoffset 2.6s var(--ease-cine) calc(var(--k) * 30ms)}
+/* Entrances: rise and fade once, in view order. Line masks for headlines. */
+[data-reveal]{opacity:0;transform:translateY(12px)}
+[data-reveal].is-in{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0) * 70ms)}
+.line{display:block;overflow:hidden;padding-bottom:.08em}
+.line>span{display:block;transform:translateY(105%);transition:transform 1s var(--ease-cine);transition-delay:calc(var(--i,0) * 110ms)}
+.is-in .line>span{transform:none}
+/* Curtain: first-load loader and page transition share one object */
+.curtain{position:fixed;inset:0;z-index:200;display:grid;place-content:center;justify-items:center;gap:24px;background:var(--footer);color:#ECE5D6;will-change:transform}
+.curtain svg{width:72px;height:auto;overflow:visible}
+.curtain .accent{fill:#E2683A}
+.curtain__bar{width:160px;height:1px;background:rgba(236,229,214,.18);overflow:hidden;opacity:0}
+.curtain__bar i{display:block;height:100%;background:#ECE5D6;transform:scaleX(0);transform-origin:left}
+.curtain--boot svg rect{opacity:0;transform:translateY(-8px);animation:lay .5s var(--ease) forwards;animation-delay:calc(var(--n) * 140ms)}
+.curtain--boot .curtain__bar{opacity:1}
+.curtain--boot .curtain__bar i{animation:fill 1.5s var(--ease-cine) forwards}
 @keyframes lay{to{opacity:1;transform:none}}
+@keyframes fill{to{transform:scaleX(1)}}
+/* Theme switch: a circle opens from the toggle */
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-old(root){z-index:1}
+::view-transition-new(root){z-index:2}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
-  [data-reveal]{opacity:1;transform:none}
-  .loader{display:none}
+  [data-reveal],.line>span{opacity:1;transform:none}
+  .topo--draw path{stroke-dashoffset:0}
 }

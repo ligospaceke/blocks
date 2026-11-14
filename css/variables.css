@@ -1,23 +1,28 @@
-/* Design tokens. Slate and cut-stone neutrals, one orange accent taken from the fleet. */
+/* Laterite and basalt: red Kajiado earth, dark volcanic stone, sandstone paper, one moss green from the fleet. */
 :root{
   --font-head:'Archivo',system-ui,sans-serif;
   --font-body:'IBM Plex Sans',system-ui,sans-serif;
   --r-tag:4px;--r-ctl:8px;--r-card:12px;--r-panel:16px;
-  --container:1120px;
+  --container:1360px;
+  --section:clamp(96px,12vw,176px);
   --ease:cubic-bezier(.22,1,.36,1);
-  --accent:#E07A2F;--accent-hover:#EB8A40;--on-accent:#14181A;
-  --bg:#F3F4F2;--card:#FFFFFF;--raised:#ECEEEB;
-  --ink:#14181A;--ink-2:#4B5559;--ink-3:#667176;
-  --hair:rgba(20,24,26,.1);--hair-strong:rgba(20,24,26,.22);
-  --panel:#161D21;--footer:#14181A;
-  --shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow-lg:0 8px 24px rgba(0,0,0,.06);
-  color-scheme:light;
+  --ease-cine:cubic-bezier(.76,0,.24,1);
 }
 [data-theme="dark"]{
-  --bg:#0E1214;--card:#151B1E;--raised:#1D2529;
-  --ink:#EDEFEF;--ink-2:#A5AFB3;--ink-3:#8A9599;
-  --hair:rgba(237,239,239,.1);--hair-strong:rgba(237,239,239,.22);
-  --panel:#1B2327;--footer:#0A0D0F;
-  --shadow-sm:none;--shadow-lg:none;
+  --bg:#0B0F0E;--card:#121816;--raised:#18201D;
+  --ink:#ECE5D6;--ink-2:#B3AD9F;--ink-3:#8C897E;
+  --hair:rgba(236,229,214,.12);--hair-strong:rgba(236,229,214,.26);
+  --accent:#E2683A;--accent-hover:#EC7B50;--on-accent:#1A0E08;
+  --moss:#8FA66A;--topo:rgba(236,229,214,.14);
+  --panel:#141B18;--footer:#070A09;
   color-scheme:dark;
+}
+[data-theme="light"]{
+  --bg:#EFE9DC;--card:#F7F3EA;--raised:#E6DFCF;
+  --ink:#161A18;--ink-2:#4A4F4A;--ink-3:#686B63;
+  --hair:rgba(22,26,24,.12);--hair-strong:rgba(22,26,24,.28);
+  --accent:#B8441A;--accent-hover:#A53B15;--on-accent:#FBF6EC;
+  --moss:#5F7A3D;--topo:rgba(22,26,24,.16);
+  --panel:#1A211E;--footer:#101412;
+  color-scheme:light;
 }
